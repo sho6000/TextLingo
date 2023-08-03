@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'textLingo'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_340DD722D30B4F77A2128D5AF6E86D27 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3328DF278B134BFCA01629E9B3213224 }}
