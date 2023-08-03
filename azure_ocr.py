@@ -1,7 +1,7 @@
-#from dotenv import load_dotenv
+
 import os
 import time
-import streamlit as st
+from dotenv import load_dotenv
 
 # Import namespaces
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
@@ -10,18 +10,21 @@ from msrest.authentication import CognitiveServicesCredentials
 
 global cv_client
 
+# Load environment variables from .env file
+load_dotenv()
 # Get Configuration Settings
-#load_dotenv()
-cog_endpoint ='https://visionnew3000.cognitiveservices.azure.com/'
-cog_key ='95f135cd76d141e595f2ffe607558453'
+
+cog_vision_endpoint = os.getenv("COG_VISION_ENDPOINT")
+cog_vision_key = os.getenv("COG_VISION_KEY")
 
 #To fix this error, you need to modify the GetTextRead function to accept the binary data of the image directly,
 #  instead of a file path. Then, you can use the image_data directly in the function, without the need for the open() function.
 
 #Here's how you can modify the GetTextRead function:
 
-credential = CognitiveServicesCredentials(cog_key) 
-cv_client = ComputerVisionClient(cog_endpoint, credential)
+credential = CognitiveServicesCredentials(cog_vision_key) 
+cv_client = ComputerVisionClient(cog_vision_endpoint, credential)
+
 #image_file = os.path.join('images','temp_image.jpg')
     
 def GetTextRead(image_file):

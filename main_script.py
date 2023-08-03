@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 from azure_ocr import GetTextRead
 from azure_translator import translate_text
+from dotenv import load_dotenv
 import os
 import cv2
 import numpy as np
@@ -29,11 +30,14 @@ cus_css = """
     }
     """
 
-# Read the contents of the CSS file
+# Load environment variables from .env file
+load_dotenv()
 
 # Apply custom CSS
 st.markdown(f"<style>{cus_css}</style>", unsafe_allow_html=True)
 
+translator_api_key = os.getenv("TRANSLATOR_API_KEY")
+translator_api_region = os.getenv("TRANSLATOR_API_REGION")
 
 # Streamlit app title and instructions
 st.title("Multilingual OCR and Translator from Azure Cognitive Services")
@@ -119,8 +123,8 @@ if "image_path" in locals():
 
 
         # Call the translation function and get the translated text
-        translator_api_key = "f1fa0447cb344041bef0921f0cf06bbc"
-        translator_api_region = "eastasia"
+        translator_api_key = translator_api_key
+        translator_api_region = translator_api_region
 
         translation_response = translate_text(translator_api_key, translator_api_region, extracted_text, [target_language_code])
 
