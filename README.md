@@ -1,4 +1,5 @@
-# Multilingual OCR and Translator
+# TextLingo
+## Multilingual OCR and Translator
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yourusername/your-repo/blob/main/LICENSE)
 
@@ -63,7 +64,3 @@ streamlit run main_script.py
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-Feel free to customize this template with specific information about your project, such as the GitHub repository URL, additional features, or specific usage instructions. Add the actual screenshots of your application to the `screenshots` folder and replace the image URLs in the `Screenshots` section with their respective captions.
-
-Remember to include your own GitHub username and repository name in the repository URL and the clone command.
