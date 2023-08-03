@@ -36,8 +36,8 @@ load_dotenv()
 # Apply custom CSS
 st.markdown(f"<style>{cus_css}</style>", unsafe_allow_html=True)
 
-translator_api_key = os.getenv("TRANSLATOR_API_KEY")
-translator_api_region = os.getenv("TRANSLATOR_API_REGION")
+trans_api_key = os.getenv("TRANSLATOR_API_KEY")
+trans_api_region = os.getenv("TRANSLATOR_API_REGION")
 
 # Streamlit app title and instructions
 st.title("Multilingual OCR and Translator from Azure Cognitive Services")
@@ -121,12 +121,10 @@ if "image_path" in locals():
                 target_language_code = k
                 print(target_language_code)
 
-
-        # Call the translation function and get the translated text
-        translator_api_key = translator_api_key
-        translator_api_region = translator_api_region
-
-        translation_response = translate_text(translator_api_key, translator_api_region, extracted_text, [target_language_code])
+        print("Translator API Key:", trans_api_key)
+        print("Translator API Region:", trans_api_region)
+        
+        translation_response = translate_text(trans_api_key, trans_api_region, extracted_text, [target_language_code])
 
         if translation_response:
             # Display the translated text
