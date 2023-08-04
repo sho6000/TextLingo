@@ -7,6 +7,8 @@ import os
 import cv2
 import numpy as np
 
+
+
 # Custom CSS style
 cus_css = """
     body {
@@ -29,7 +31,6 @@ cus_css = """
         border-radius: 5px !important;
     }
     """
-
 # Load environment variables from .env file
 load_dotenv()
 
@@ -40,45 +41,17 @@ trans_api_key = os.getenv("TRANSLATOR_API_KEY")
 trans_api_region = os.getenv("TRANSLATOR_API_REGION")
 
 # Streamlit app title and instructions
-st.title("Multilingual OCR and Translator from Azure Cognitive Services")
+st.title("Multilingual OCR and Translator from Azure Cognitive Services")    
 
-# Choose the capture method
-capture_method = st.radio("Choose capture method:", ("Capture from Webcam", "Upload Image"))
+# First field for image upload
+st.subheader("Upload your files here")
+uploaded_file = st.file_uploader("_____", type=["jpg", "jpeg", "png", "pdf"])
 
-if capture_method == "Capture from Webcam":
-    # Second field for webcam capture
-    st.subheader("Take a picture from webcam")
-    btn_camera_capture = st.button("Capture Picture")
-
-    if btn_camera_capture:
-        # Code to capture picture from webcam
-        # Use cv2.VideoCapture to capture an image from the webcam
-        cap = cv2.VideoCapture(0)
-        ret, frame = cap.read()
-        cap.release()
-
-        # Convert the BGR frame to RGB
-        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-
-        # Save the captured image to a temporary file
-        image_path = "temp_image.jpg"
-        cv2.imwrite(image_path, frame)
-        print("Yes")
-
-        # Display the captured image in the frontend
-        st.image(frame, channels="RGB", use_column_width=True)
-
-    
-elif capture_method == "Upload Image":
-    # First field for image upload
-    st.subheader("Upload your files here")
-    uploaded_file = st.file_uploader("_____", type=["jpg", "jpeg", "png", "pdf"])
-
-    if uploaded_file is not None:
-        # Save the uploaded image to a temporary file
-        image_path = "temp_image.jpg"
-        with open(image_path, "wb") as f:
-            f.write(uploaded_file.read())
+if uploaded_file is not None:
+    # Save the uploaded image to a temporary file
+    image_path = "temp_image.jpg"
+    with open(image_path, "wb") as f:
+        f.write(uploaded_file.read())
 
 # Process the image if available
 if "image_path" in locals():

@@ -1,0 +1,23 @@
+# Choose the capture method
+'''if capture_method == "Capture from Webcam":
+    # Second field for webcam capture
+    st.subheader("Take a picture from webcam")
+    btn_camera_capture = st.button("Capture Picture")
+
+    if btn_camera_capture:
+        # Code to capture picture from webcam
+        # Use cv2.VideoCapture to capture an image from the webcam
+        cap = cv2.VideoCapture(0)
+        ret, frame = cap.read()
+        cap.release()
+
+        # Convert the BGR frame to RGB
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+        # Save the captured image to a temporary file
+        image_path = "temp_image.jpg"
+        cv2.imwrite(image_path, frame)
+        print("Yes")
+
+        # Display the captured image in the frontend
+        st.image(frame, channels="RGB", use_column_width=True)'''
