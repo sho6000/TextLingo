@@ -63,6 +63,7 @@ if capture_method == "Capture from Webcam":
         # Save the captured image to a temporary file
         image_path = "temp_image.jpg"
         cv2.imwrite(image_path, frame)
+        print("Yes")
 
         # Display the captured image in the frontend
         st.image(frame, channels="RGB", use_column_width=True)
@@ -94,6 +95,7 @@ if "image_path" in locals():
         lines = extracted_text.split("\n")
         for line in lines:
             st.write(line)
+        print(lines)
         
         # Dictionary mapping language codes to full names
         language_names = {
